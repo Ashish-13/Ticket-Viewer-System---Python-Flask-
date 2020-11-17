@@ -7,6 +7,7 @@ Description: The application retrieves data from Zendesk API and displays them i
 2. View all tickets and then view ticket details accordingly.
 
 Technology Used: Python (version 3.7), HTML and CSS
+
 Web Framework: Flask, Jinja2 and Bootstrap
 Python Library:
 1. flask
