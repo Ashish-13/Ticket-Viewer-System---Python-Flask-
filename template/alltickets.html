@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Ticket Viewer{% endblock %} 
+
+{% block content %}
+<body>
+  <div class="container">
+    <nav class="navbar fixed-top nav">
+      <h1 style="color: azure;"><a href= "{{url_for('home')}}" class="btn1" type="submit"><i class="fa fa-home"></i></a> Ticket Viewer </h1>
+  </nav>
+  </div>  
+  
+  <div class="container pt-5 allticks">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Ticket ID</th>
+            <th scope="col">Type</th>
+            <th scope="col">Priority</th>
+            <th scope="col">Status</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Created On</th>
+            <th scope="col">Updated On</th>
+          </tr>
+        </thead>
+      </div>
+        <tbody>
+          {% for t in content%}  
+          <tr>
+            <th scope="row "><a class="btn btn-primary" href="{{url_for('ticketValue', arg_a= t['id'])}}" type='submit'>{{t['id']}}</a></th>
+            <td>{{t['type']}}</td>
+            <td>{{t['priority']}}</td>
+            <td>{{t['status'][0]|upper}}{{t['status'][1:]}}</td>
+            <td>{{t['subject']}}</td>
+            <td>{{t['created_at'][0:10]}} {{t['created_at'][11:19]}}</td>
+            <td>{{t['updated_at'][0:10]}} {{t['updated_at'][11:19]}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table> 
+      <div style="width:200px; margin:0 auto;">
+        {{ pagination.links }}
+      </div>
+    </div> 
+</body>
+{% endblock %}

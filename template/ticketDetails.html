@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Ticket Details{% endblock %}
+
+{% block content %}
+<body class= 'btds'>
+    <div class="container tds">
+        <div class="row" id='thead'>
+            <div class="col">
+                Ticket ID : {{tdetails['id']}}
+            </div>
+            <div class="col-1.5 ml-auto">
+                <a href= "{{url_for('home')}}" class="btn1" type="submit"><i class="fa fa-home"></i>
+                </a>
+            </div>
+            <div class="col-1 ml-auto">
+                <a href= "{{url_for('getTickets')}}" class="btn1" type="submit"><i class="fa fa-folder"></i>
+                </a>
+            </div>
+        </div>
+        <div class="row pt-4">
+            <div class="col-3" id='reqid'>
+                <b>Requester Id: </b>{{tdetails['requester_id']}}
+             </div>
+            <div class="col-3 ml-auto" id='ttype'>
+                <b>Type: </b>{{tdetails['type']}}
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="col-3" id='subid'>
+                <b>Submitter Id: </b>{{tdetails['submitter_id']}}
+            </div>
+            <div class="col-3 ml-auto" id='tstatus'>
+                <b>Status: </b>{{tdetails['status'][0]|upper}}{{tdetails['status'][1:]}}
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="col-3" id='asgnid'>
+                <b>Assignee Id: </b>{{tdetails['assignee_id']}}
+            </div>
+            <div class="col-3 ml-auto" id='tpr'>
+                <b>Priority: </b>{{tdetails['priority']}}
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="col-3.5" id='tcreate'>
+                <b>Created On: </b>{{tdetails['created_at'][0:10]}} {{tdetails['created_at'][11:19]}}
+             </div>
+            <div class="col-3.5 ml-auto" id='tupdate'>
+                <b>Updated On: </b>{{tdetails['updated_at'][0:10]}} {{tdetails['updated_at'][11:19]}}
+            </div>
+        </div>
+        <hr/>
+        <div class="row pt-2">
+            <div class="col-md-auto" id='tsub'>
+                <b>Subject: </b>{{tdetails['subject']}}
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="col-md-auto" id='tdesc'>
+                <b>Description: </b>{{tdetails['description']}}
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="col-md-auto" id='ttags'>
+                <b>Tags: </b>{% for tag in tdetails['tags']%}
+                {% if tag == tdetails['tags'][-1]%}
+                {{tag}}.
+                {%else%}
+                {{tag}},
+                {%endif%}  
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

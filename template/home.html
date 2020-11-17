@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Zendesk Home{% endblock %}
+
+{% block content %}
+<body>
+    <div class="container pt-4">
+        <center>
+            <img src="/static/zendesk.png" alt="Zendesk logo" width="50%" height="auto">
+        </center>
+        <div class="row pt-1">
+            <form  class= "searchticket" method="post">
+                <input type="text" name="ticketID"  placeholder=" Search Ticket ID" size="70" >
+                <input class="btn btn-primary" type="submit" value="Search">
+            </form>             
+        </div>
+        <div class="row" >
+            <div class="col-md-4 offset-md-4 error">{{value}}</div>
+        </div>
+
+        <div class="row pt-2 hallts">
+            <div class="col-md-4 offset-md-4">
+                <form action = "{{url_for('getTickets')}}", method="POST">
+                    <button name ='allTickets' type="submit" class="btn btn-primary btn-lg btn-block">All Tickets</button>   
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
